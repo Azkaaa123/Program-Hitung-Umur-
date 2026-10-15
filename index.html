@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Hitung Umur</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, button { padding: 8px; margin-top: 5px; }
+        #hasil { font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <h2>Program Hitung Umur</h2>
+    
+    <label for="tahun">Masukan Tahun Lahir:</label>
+    <input type="number" id="tahun" placeholder="contoh: 2007">
+    <button onclick="hitungUmur()">Hitung</button>
+    
+    <p id="hasil"></p>
+
+    <script>
+        function hitungUmur() {
+            let tahunLahirInput = document.getElementById("tahun").value;
+            let tahunSekarang = new Date().getFullYear();
+            let hasilElement = document.getElementById("hasil");
+
+            // Tugas 2a: Validasi input kosong
+            if (tahunLahirInput === "") {
+                hasilElement.innerHTML = "Tahun lahir tidak boleh kosong!";
+                hasilElement.style.color = "red";
+                return;
+            }
+
+            let tahunLahir = Number(tahunLahirInput);
+
+            // Tugas 2b: Validasi tahun lahir > tahun sekarang
+            if (tahunLahir > tahunSekarang) {
+                hasilElement.innerHTML = "Tahun lahir tidak boleh lebih besar dari tahun sekarang!";
+                hasilElement.style.color = "red";
+                return;
+            }
+
+            let umur = tahunSekarang - tahunLahir;
+
+            hasilElement.style.color = "green";
+            hasilElement.innerHTML = "Umur kamu sekarang adalah " + umur + " tahun.";
+        } 
+    </script>
+</body>
+</html>
